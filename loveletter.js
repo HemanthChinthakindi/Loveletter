@@ -1,34 +1,57 @@
-function toggleLetter() {
-    var envelope = document.querySelector('.envelope');
-    var letter = document.getElementById('love-message');
-    var flap = document.querySelector('.flap');
+let isDragging = false;
+let startY = 0;
+let currentY = 0;
 
-    if (!envelope.classList.contains('open')) {
-        // Open the envelope
+const envelope = document.querySelector('.envelope');
+const flap = document.querySelector('.flap');
+const letter = document.getElementById('love-message');
+
+flap.addEventListener('mousedown', startDrag);
+document.addEventListener('mousemove', drag);
+document.addEventListener('mouseup', endDrag);
+
+function startDrag(event) {
+    isDragging = true;
+    startY = event.clientY;
+    envelope.classList.add('dragging');
+}
+
+function drag(event) {
+    if (!isDragging) return;
+    currentY = event.clientY;
+    let distance = currentY - startY;
+    if (distance < 0) distance = 0;
+    let rotation = Math.min(distance / 2, 180); // Control rotation
+    flap.style.transform = `rotateX(${-rotation}deg)`;
+    if (rotation === 180) {
         envelope.classList.add('open');
-        playAudio(); // Play audio immediately
-        setTimeout(function() {
-            letter.classList.add('open');
-        }, 2000); // Slower timing for letter reveal
+        letter.classList.add('open');
+        playAudio();
     } else {
-        // Close the envelope
+        envelope.classList.remove('open');
         letter.classList.remove('open');
         stopAudio();
-        setTimeout(function() {
-            envelope.classList.remove('open');
-        }, 2000); // Slower timing for envelope close
+    }
+}
+
+function endDrag(event) {
+    isDragging = false;
+    flap.style.transform = '';
+    envelope.classList.remove('dragging');
+    if (envelope.classList.contains('open')) {
+        flap.style.transform = 'rotateX(-180deg)';
     }
 }
 
 function playAudio() {
-    var audio = document.getElementById('mylove-audio');
+    const audio = document.getElementById('mylove-audio');
     audio.play()
         .then(() => console.log('Playback started'))
         .catch(error => console.error('Playback could not be started:', error));
 }
 
 function stopAudio() {
-    var audio = document.getElementById('mylove-audio');
+    const audio = document.getElementById('mylove-audio');
     audio.pause();
     audio.currentTime = 0;
 }
