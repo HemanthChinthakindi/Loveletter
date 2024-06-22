@@ -1,12 +1,11 @@
 let isDragging = false;
-let startY = 0;
-let startRotation = 0;
+let startMouseY = 0;
+let startFlapRotation = 0;
 
 const envelope = document.querySelector('.envelope');
 const flap = document.querySelector('.flap');
 const zipperHandle = document.querySelector('.zipper-handle');
 const letter = document.getElementById('love-message');
-const dragHelper = document.querySelector('.drag-helper');
 
 zipperHandle.addEventListener('mousedown', startDrag);
 document.addEventListener('mousemove', drag);
@@ -14,28 +13,27 @@ document.addEventListener('mouseup', endDrag);
 
 function startDrag(event) {
     isDragging = true;
-    startY = event.clientY;
-    startRotation = getCurrentRotation();
+    startMouseY = event.clientY;
+    startFlapRotation = getCurrentRotation();
     envelope.classList.add('dragging');
-    dragHelper.style.display = 'none'; // Hide drag helper when dragging starts
 }
 
 function drag(event) {
     if (!isDragging) return;
-    let currentY = event.clientY;
-    let rotation = startRotation + (currentY - startY) * 0.2; // Adjust multiplier for rotation speed
+    let currentMouseY = event.clientY;
+    let dragDistance = currentMouseY - startMouseY;
     
-    // Limit rotation to 0 to 180 degrees
-    rotation = Math.max(0, Math.min(rotation, 180));
+    // Limit drag distance to positive values
+    dragDistance = Math.max(0, dragDistance);
     
-    flap.style.transform = `rotateX(${rotation}deg)`;
+    let newRotation = startFlapRotation + (dragDistance / 5); // Adjust divisor for rotation speed
     
-    if (rotation >= 180) {
+    flap.style.transform = `rotateX(${newRotation}deg)`;
+    
+    if (newRotation >= 180) {
         envelope.classList.add('open');
         letter.classList.add('open');
         playAudio();
-        // Hide drag helper permanently once letter is opened
-        dragHelper.style.display = 'none';
     } else {
         envelope.classList.remove('open');
         letter.classList.remove('open');
@@ -46,10 +44,6 @@ function drag(event) {
 function endDrag(event) {
     isDragging = false;
     envelope.classList.remove('dragging');
-    // Show drag helper only if the letter is not fully opened
-    if (!envelope.classList.contains('open')) {
-        dragHelper.style.display = 'block';
-    }
 }
 
 function getCurrentRotation() {
