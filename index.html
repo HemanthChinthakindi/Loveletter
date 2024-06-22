@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Letter with Song</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="loveletter.css">
 </head>
 <body>
-    <div class="container">
-        <div class="letter">
-            <h1>Dear Beloved,</h1>
-            <p>Here's a song just for you:</p>
-            <button id="playSong">Open Letter and Play Song</button>
+    <div class="envelope" onclick="toggleLetter()">
+        <div class="flap"></div>
+        <div class="body"></div>
+        <div class="letter" id="love-message">
+            <p>
+                Mah dear kundanapu bomma 🖤,<br>
+                Never have I been so blessed as to fall in love with someone as wonderful as you...<br>
+                I loveeee youuuu :)<br>
+                Always yours,<br>
+                @hh.m4a
+            </p>
+            <audio id="mylove-audio" src="mylove.mp3"></audio>
+            <button onclick="toggleAudio()">Play Song</button>
         </div>
-        <audio id="myLoveSong" src="mylove.mp3" preload="auto"></audio>
     </div>
 
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+    <script src="loveletter.js"></script>
 </body>
 </html>
+
 
