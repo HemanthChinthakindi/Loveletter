@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="loveletter.css">
 </head>
 <body>
-    <div class="envelope">
-        <div class="flap">
-            <div class="zipper-handle"></div>
+    <div class="envelope" onclick="toggleLetter()">
+        <div class="flap"></div>
+        <div class="body">
+            <div class="open-message">click to open the letter</div> <!-- Added message -->
         </div>
-        <div class="body"></div>
         <div class="letter" id="love-message">
             <p>
                 Mah dear kundanapu bomma 🖤,<br>
@@ -22,10 +22,6 @@
             </p>
             <audio id="mylove-audio" src="mylove.mp3"></audio>
         </div>
-    </div>
-
-    <div class="drag-helper">
-        <p>Drag to open the letter</p>
     </div>
 
     <script src="loveletter.js"></script>

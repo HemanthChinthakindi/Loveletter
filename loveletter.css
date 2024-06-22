@@ -14,12 +14,13 @@ body {
     position: relative;
     width: 600px;
     height: 400px;
+    cursor: pointer;
     perspective: 1000px;
     background: url('https://static.vecteezy.com/system/resources/previews/010/029/965/non_2x/love-letter-pattern-texture-with-text-effect-on-a-white-background-valentine-s-day-special-seamless-pattern-design-with-love-shapes-love-endless-pattern-decoration-for-bed-sheets-and-wallpapers-vector.jpg');
     background-size: cover;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.6s ease;
+    transition: transform 1.5s ease; /* Slower transition */
     margin-top: 50px;
 }
 
@@ -30,24 +31,10 @@ body {
     background: url('https://static.vecteezy.com/system/resources/previews/010/029/965/non_2x/love-letter-pattern-texture-with-text-effect-on-a-white-background-valentine-s-day-special-seamless-pattern-design-with-love-shapes-love-endless-pattern-decoration-for-bed-sheets-and-wallpapers-vector.jpg');
     background-size: cover;
     transform-origin: bottom;
-    transition: transform 0.8s ease;
+    transition: transform 2s ease; /* Slower transition */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: grab;
-}
-
-.zipper-handle {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 20px;
-    background-color: #000;
-    border-radius: 10px 10px 0 0;
-    cursor: grab;
-    z-index: 1;
 }
 
 .body {
@@ -63,6 +50,25 @@ body {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.open-message {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    animation: colorChange 0.5s infinite;
+}
+
+@keyframes colorChange {
+    0% { color: red; }
+    20% { color: orange; }
+    40% { color: yellow; }
+    60% { color: green; }
+    80% { color: blue; }
+    100% { color: purple; }
+}
+
 .letter {
     position: absolute;
     top: 50%;
@@ -75,7 +81,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     text-align: justify;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 2s ease, transform 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* Slower transition */
     border-radius: 8px;
 }
 
@@ -93,26 +99,4 @@ body {
 .open .letter {
     transform: translate(-50%, -50%) scale(1); /* Scale up and show letter */
     opacity: 1;
-}
-
-.dragging .flap, .dragging .zipper-handle {
-    cursor: grabbing;
-}
-
-.drag-helper {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.drag-helper p {
-    margin: 0;
-    font-size: 16px;
-    color: #333;
-    text-align: center;
 }

@@ -1,39 +1,34 @@
-let isOpen = false;
-
-const envelope = document.querySelector('.envelope');
-const flap = document.querySelector('.flap');
-const zipperHandle = document.querySelector('.zipper-handle');
-const letter = document.getElementById('love-message');
-
-zipperHandle.addEventListener('click', toggleLetter);
-
 function toggleLetter() {
-    if (!isOpen) {
-        // Open the letter
-        flap.style.transform = 'rotateX(180deg)';
+    var envelope = document.querySelector('.envelope');
+    var letter = document.getElementById('love-message');
+    var flap = document.querySelector('.flap');
+
+    if (!envelope.classList.contains('open')) {
+        // Open the envelope
         envelope.classList.add('open');
-        letter.classList.add('open');
-        playAudio();
-        isOpen = true;
+        playAudio(); // Play audio immediately
+        setTimeout(function() {
+            letter.classList.add('open');
+        }, 2000); // Slower timing for letter reveal
     } else {
-        // Close the letter
-        flap.style.transform = '';
-        envelope.classList.remove('open');
+        // Close the envelope
         letter.classList.remove('open');
         stopAudio();
-        isOpen = false;
+        setTimeout(function() {
+            envelope.classList.remove('open');
+        }, 2000); // Slower timing for envelope close
     }
 }
 
 function playAudio() {
-    const audio = document.getElementById('mylove-audio');
+    var audio = document.getElementById('mylove-audio');
     audio.play()
         .then(() => console.log('Playback started'))
         .catch(error => console.error('Playback could not be started:', error));
 }
 
 function stopAudio() {
-    const audio = document.getElementById('mylove-audio');
+    var audio = document.getElementById('mylove-audio');
     audio.pause();
     audio.currentTime = 0;
 }
