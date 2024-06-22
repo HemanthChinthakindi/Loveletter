@@ -7,18 +7,16 @@ function toggleLetter() {
         // Open the envelope
         envelope.classList.add('open');
         setTimeout(function() {
-            letter.classList.add('fullSize');
-            letter.style.opacity = '1';
+            letter.classList.add('open');
             playAudio();
-        }, 800);
+        }, 800); // Adjust timing as needed
     } else {
         // Close the envelope
-        letter.classList.remove('fullSize');
-        letter.style.opacity = '0';
+        letter.classList.remove('open');
+        stopAudio();
         setTimeout(function() {
             envelope.classList.remove('open');
-            stopAudio();
-        }, 800);
+        }, 800); // Adjust timing as needed
     }
 }
 
