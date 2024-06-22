@@ -37,6 +37,18 @@ body {
     cursor: grab;
 }
 
+.zipper-handle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 10px 10px 0 0;
+    cursor: grab;
+}
+
 .body {
     position: absolute;
     top: 50%;
@@ -82,6 +94,6 @@ body {
     opacity: 1;
 }
 
-.dragging .flap {
+.dragging .flap, .dragging .zipper-handle {
     cursor: grabbing;
 }

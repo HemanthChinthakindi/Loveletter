@@ -4,9 +4,10 @@ let currentY = 0;
 
 const envelope = document.querySelector('.envelope');
 const flap = document.querySelector('.flap');
+const zipperHandle = document.querySelector('.zipper-handle');
 const letter = document.getElementById('love-message');
 
-flap.addEventListener('mousedown', startDrag);
+zipperHandle.addEventListener('mousedown', startDrag);
 document.addEventListener('mousemove', drag);
 document.addEventListener('mouseup', endDrag);
 
