@@ -98,3 +98,21 @@ body {
 .dragging .flap, .dragging .zipper-handle {
     cursor: grabbing;
 }
+
+.drag-helper {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.drag-helper p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}

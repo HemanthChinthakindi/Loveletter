@@ -6,6 +6,7 @@ const envelope = document.querySelector('.envelope');
 const flap = document.querySelector('.flap');
 const zipperHandle = document.querySelector('.zipper-handle');
 const letter = document.getElementById('love-message');
+const dragHelper = document.querySelector('.drag-helper');
 
 zipperHandle.addEventListener('mousedown', startDrag);
 document.addEventListener('mousemove', drag);
@@ -15,6 +16,7 @@ function startDrag(event) {
     isDragging = true;
     startY = event.clientY;
     envelope.classList.add('dragging');
+    dragHelper.style.display = 'none'; // Hide drag helper when dragging starts
 }
 
 function drag(event) {
@@ -39,6 +41,7 @@ function endDrag(event) {
     isDragging = false;
     flap.style.transform = '';
     envelope.classList.remove('dragging');
+    dragHelper.style.display = 'block'; // Show drag helper when dragging ends
     if (envelope.classList.contains('open')) {
         flap.style.transform = 'rotateX(-180deg)';
     }
