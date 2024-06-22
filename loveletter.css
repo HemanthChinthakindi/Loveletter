@@ -54,12 +54,13 @@ body {
     transform: translate(-50%, -50%) scale(0.1); /* Initially scaled down */
     width: 80%;
     max-width: 400px; /* Adjust max-width as needed */
-    background-color: #fafafa;
+    background-color: rgba(255, 255, 255, 0.8);
     opacity: 0;
     padding: 20px;
     box-sizing: border-box;
     text-align: justify;
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 8px;
 }
 
 .letter p {
@@ -76,17 +77,3 @@ body {
     opacity: 1;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #f00;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-family: 'Sedan', serif;
-}
-
-button:hover {
-    background-color: #d00;
-}
