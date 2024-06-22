@@ -6,9 +6,9 @@ function toggleLetter() {
     if (!envelope.classList.contains('open')) {
         // Open the envelope
         envelope.classList.add('open');
+        playAudio(); // Play audio immediately
         setTimeout(function() {
             letter.classList.add('open');
-            playAudio();
         }, 800); // Adjust timing as needed
     } else {
         // Close the envelope
