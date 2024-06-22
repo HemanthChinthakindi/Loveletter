@@ -1,7 +1,6 @@
 let isDragging = false;
-let startMouseY = 0;
-let startFlapRotation = 0;
-let minDragDistance = 20; // Minimum pixels to drag before opening
+let startY = 0;
+let startRotation = 0;
 
 const envelope = document.querySelector('.envelope');
 const flap = document.querySelector('.flap');
@@ -15,29 +14,28 @@ document.addEventListener('mouseup', endDrag);
 
 function startDrag(event) {
     isDragging = true;
-    startMouseY = event.clientY;
-    startFlapRotation = getCurrentRotation();
+    startY = event.clientY;
+    startRotation = getCurrentRotation();
     envelope.classList.add('dragging');
     dragHelper.style.display = 'none'; // Hide drag helper when dragging starts
 }
 
 function drag(event) {
     if (!isDragging) return;
-    let currentMouseY = event.clientY;
-    let dragDistance = currentMouseY - startMouseY;
+    let currentY = event.clientY;
+    let rotation = startRotation + (currentY - startY) * 0.2; // Adjust multiplier for rotation speed
     
-    // Limit drag distance
-    if (dragDistance < 0) dragDistance = 0;
-    if (dragDistance > minDragDistance) dragDistance = minDragDistance;
+    // Limit rotation to 0 to 180 degrees
+    rotation = Math.max(0, Math.min(rotation, 180));
     
-    let newRotation = startFlapRotation + (dragDistance / minDragDistance) * 180;
-    flap.style.transform = `rotateX(${newRotation}deg)`;
+    flap.style.transform = `rotateX(${rotation}deg)`;
     
-    // Open the envelope when minimum drag distance is reached
-    if (dragDistance >= minDragDistance) {
+    if (rotation >= 180) {
         envelope.classList.add('open');
         letter.classList.add('open');
         playAudio();
+        // Hide drag helper permanently once letter is opened
+        dragHelper.style.display = 'none';
     } else {
         envelope.classList.remove('open');
         letter.classList.remove('open');
@@ -47,9 +45,11 @@ function drag(event) {
 
 function endDrag(event) {
     isDragging = false;
-    flap.style.transform = '';
     envelope.classList.remove('dragging');
-    dragHelper.style.display = 'block'; // Show drag helper when dragging ends
+    // Show drag helper only if the letter is not fully opened
+    if (!envelope.classList.contains('open')) {
+        dragHelper.style.display = 'block';
+    }
 }
 
 function getCurrentRotation() {
