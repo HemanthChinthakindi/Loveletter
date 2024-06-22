@@ -9,15 +9,19 @@ zipperHandle.addEventListener('click', toggleLetter);
 
 function toggleLetter() {
     if (!isOpen) {
+        // Open the letter
         flap.style.transform = 'rotateX(180deg)';
         envelope.classList.add('open');
         letter.classList.add('open');
         playAudio();
         isOpen = true;
-        
-        // Disable further clicks once letter is opened
-        zipperHandle.style.pointerEvents = 'none';
-        zipperHandle.style.cursor = 'default';
+    } else {
+        // Close the letter
+        flap.style.transform = '';
+        envelope.classList.remove('open');
+        letter.classList.remove('open');
+        stopAudio();
+        isOpen = false;
     }
 }
 
@@ -26,4 +30,10 @@ function playAudio() {
     audio.play()
         .then(() => console.log('Playback started'))
         .catch(error => console.error('Playback could not be started:', error));
+}
+
+function stopAudio() {
+    const audio = document.getElementById('mylove-audio');
+    audio.pause();
+    audio.currentTime = 0;
 }
