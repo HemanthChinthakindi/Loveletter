@@ -16,7 +16,7 @@ body {
     height: 400px;
     cursor: pointer;
     perspective: 1000px;
-    background: url('https://img.freepik.com/premium-vector/valentine-love-cute-hearts-seamless-pattern-wallpaper-background_868676-82.jpg');
+    background: url('https://static.vecteezy.com/system/resources/previews/010/029/965/non_2x/love-letter-pattern-texture-with-text-effect-on-a-white-background-valentine-s-day-special-seamless-pattern-design-with-love-shapes-love-endless-pattern-decoration-for-bed-sheets-and-wallpapers-vector.jpg');
     background-size: cover;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -70,11 +70,6 @@ body {
     font-size: 20px;
     color: #000; /* Black color for text */
     line-height: 1.6;
-}
-
-.letter .play-song {
-    color: #f00; /* Red color for "Play Song" text */
-    font-weight: bold;
 }
 
 .open .flap {
