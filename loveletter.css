@@ -20,7 +20,7 @@ body {
     background-size: cover;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.6s ease;
+    transition: transform 1.5s ease; /* Slower transition */
     margin-top: 50px;
 }
 
@@ -31,7 +31,7 @@ body {
     background: url('https://static.vecteezy.com/system/resources/previews/010/029/965/non_2x/love-letter-pattern-texture-with-text-effect-on-a-white-background-valentine-s-day-special-seamless-pattern-design-with-love-shapes-love-endless-pattern-decoration-for-bed-sheets-and-wallpapers-vector.jpg');
     background-size: cover;
     transform-origin: bottom;
-    transition: transform 0.8s ease;
+    transition: transform 2s ease; /* Slower transition */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -81,7 +81,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     text-align: justify;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 2s ease, transform 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* Slower transition */
     border-radius: 8px;
 }
 
