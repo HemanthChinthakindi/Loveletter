@@ -9,14 +9,14 @@ function toggleLetter() {
         playAudio(); // Play audio immediately
         setTimeout(function() {
             letter.classList.add('open');
-        }, 2000); // Slower timing for letter reveal
+        }, 200); // Faster timing for letter reveal (reduced from 2000 to 200 milliseconds)
     } else {
         // Close the envelope
         letter.classList.remove('open');
         stopAudio();
         setTimeout(function() {
             envelope.classList.remove('open');
-        }, 2000); // Slower timing for envelope close
+        }, 200); // Faster timing for envelope close (reduced from 2000 to 200 milliseconds)
     }
 }
 
