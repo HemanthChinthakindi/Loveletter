@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var openMessage = document.getElementById('openMessage');
+    openMessage.classList.add('active');
+});
+
 function toggleLetter() {
     var envelope = document.querySelector('.envelope');
     var letter = document.getElementById('love-message');
@@ -9,13 +14,11 @@ function toggleLetter() {
         envelope.classList.add('open');
         playAudio(); // Play audio immediately
         setTimeout(function() {
-            openMessage.classList.add('active');
             letter.classList.add('open');
-        }, 1000); // Wait for the flap to open completely (1 second) before activating the message
+        }, 1000); // Wait for the flap to open completely (1 second) before showing the letter
     } else {
         // Close the envelope
         letter.classList.remove('open');
-        openMessage.classList.remove('active');
         stopAudio();
         setTimeout(function() {
             envelope.classList.remove('open');
