@@ -20,7 +20,6 @@ body {
     background-size: cover;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 1.5s ease; /* Slower transition */
     margin-top: 50px;
 }
 
@@ -31,7 +30,7 @@ body {
     background: url('https://static.vecteezy.com/system/resources/previews/010/029/965/non_2x/love-letter-pattern-texture-with-text-effect-on-a-white-background-valentine-s-day-special-seamless-pattern-design-with-love-shapes-love-endless-pattern-decoration-for-bed-sheets-and-wallpapers-vector.jpg');
     background-size: cover;
     transform-origin: bottom;
-    transition: transform 2s ease; /* Slower transition */
+    transition: transform 1s ease;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -57,6 +56,9 @@ body {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+}
+
+.open-message.active {
     animation: colorChange 0.5s infinite;
 }
 
@@ -73,21 +75,21 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.1); /* Initially scaled down */
+    transform: translate(-50%, -50%) scale(0.1);
     width: 80%;
-    max-width: 400px; /* Adjust max-width as needed */
+    max-width: 400px;
     background-color: rgba(255, 255, 255, 0.8);
     opacity: 0;
     padding: 20px;
     box-sizing: border-box;
     text-align: justify;
-    transition: opacity 2s ease, transform 2s cubic-bezier(0.165, 0.84, 0.44, 1); /* Slower transition */
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
     border-radius: 8px;
 }
 
 .letter p {
     font-size: 20px;
-    color: #000; /* Black color for text */
+    color: #000;
     line-height: 1.6;
 }
 
@@ -97,6 +99,6 @@ body {
 }
 
 .open .letter {
-    transform: translate(-50%, -50%) scale(1); /* Scale up and show letter */
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
